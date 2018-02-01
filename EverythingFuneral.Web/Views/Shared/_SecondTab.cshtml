@@ -1,0 +1,40 @@
+﻿@model  EverythingFuneral.Web.Models.ViewModels.RequestService
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.EditorFor(model => model.ResidentialAddressStreetAddress, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ResidentialAddressStreetAddress) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ResidentialAddressSurbub, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ResidentialAddressSurbub) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ResidentialAddressCity, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ResidentialAddressCity) } })
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(m => m.ResidentialAddressProvince, new SelectList(Model.SelectProvinces, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.ResidentialAddressProvince)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.ResidentialAddressProvince), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(m => m.ResidentialAddressCountry, new SelectList(Model.SelectCountries, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.ResidentialAddressCountry)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.ResidentialAddressCountry), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ResidentialAddressPostalCode, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ResidentialAddressPostalCode), @type = "number", @required = true, @minLength = "4", @maxLength = "4", @oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" } })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.DropDownListFor(m => m.PostalAddressSameResidential, new SelectList(Model.SelectYesNoOptions, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.PostalAddressSameResidential)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.PostalAddressSameResidential), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group SameAsResidential">
+            @Html.EditorFor(model => model.PostalAddressLineOne, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.PostalAddressLineOne) } })
+        </div>
+        <div class="form-group SameAsResidential">
+            @Html.EditorFor(model => model.PostalAddressLineTwo, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.PostalAddressLineTwo) } })
+        </div>
+        <div class="form-group SameAsResidential">
+            @Html.EditorFor(model => model.PostalAddressCity, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.PostalAddressCity) } })
+        </div>
+        <div class="form-group SameAsResidential">
+            @Html.EditorFor(model => model.PostalAddressCode, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.PostalAddressCode), @type = "number", @minLength = "4", @maxLength = "4", @oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" } })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,588 @@
+﻿@model  EverythingFuneral.Web.Models.ViewModels.RequestService
+@{
+    ViewBag.Title = "Request Service - Success";
+}
+
+<div class="row">
+    <div id="Successmessage1" class="alert alert-success alert-dismissable" style="text-align:center;font-weight:bold">
+        <button id="CloseMessage" class="close CloseMessage" type="button">×</button>
+        <p>
+            @Html.Raw(string.Format("Request successfully created. Reference Number : {0}",Model.MemebershipReference))
+        </p>
+    </div>
+</div>
+
+<div class="row" id="PrintPage">
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">PERSONAL INFORMATION</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Name</b></td>
+                <td>@Html.Raw(Model.FullName)</td>
+            </tr>
+            <tr>
+                <td><b>Surname</b></td>
+                <td>@Html.Raw(Model.Surname)</td>
+            </tr>
+            <tr>
+                <td><b>Email</b></td>
+                <td>@Html.Raw(Model.Username)</td>
+            </tr>
+            <tr>
+                <td><b>Reference Number</b></td>
+                <td>@Html.Raw(Model.MemebershipReference)</td>
+            </tr>
+            <tr>
+                <td><b>ID/Passport Number</b></td>
+                <td>@Html.Raw(Model.IdNumber)</td>
+            </tr>
+            <tr>
+                <td><b>Country Of Issue</b></td>
+                <td>@Html.Raw(Model.CountryOfIssue)</td>
+            </tr>
+            <tr>
+                <td><b>Home Language</b></td>
+                <td>@Html.Raw(Model.HomeLanguage)</td>
+            </tr>
+            <tr>
+                <td><b>Status</b></td>
+                <td>@Html.Raw(Model.MaritalStatus)</td>
+            </tr>
+            <tr>
+                <td><b>Number Of Dependent(s)</b></td>
+                <td>@Html.Raw(Model.NumberOfDependent)</td>
+            </tr>
+            <tr>
+                <td><b>Highest Qualification</b></td>
+                <td>@Html.Raw(Model.HighestQualification)</td>
+            </tr>
+            <tr>
+                <td><b>Employer Name</b></td>
+                <td>@Html.Raw(Model.EmployerName)</td>
+            </tr>
+            <tr>
+                <td><b>Number Of Year(s) Working At Employer</b></td>
+                <td>@Html.Raw(Model.YearsWorkingAtEmployer)</td>
+            </tr>
+            <tr>
+                <td><b>Industry</b></td>
+                <td>@Html.Raw(Model.Industry)</td>
+            </tr>
+            <tr>
+                <td><b>Gross Salary</b></td>
+                <td>@Html.Raw(string.Format("R{0}",Model.GrossSalary))</td>
+            </tr>
+            <tr>
+                <td><b>Net Income</b></td>
+                <td>@Html.Raw((string.Format("R{0}", Model.NetIncome)))</td>
+            </tr>
+            <tr>
+                <td><b>Contact Number</b></td>
+                <td>@Html.Raw(Model.CellNumber)</td>
+            </tr>
+            <tr>
+                <td><b>Next Of Kin Name</b></td>
+                <td>@Html.Raw(Model.NextOfKinName)</td>
+            </tr>
+            <tr>
+                <td><b>Next Of Kin Cellphone Numer</b></td>
+                <td>@Html.Raw(Model.NextOfKinCellNumber)</td>
+            </tr>
+            <tr>
+                <td><b>Can our marketing team contact your?</b></td>
+                <td>@Html.Raw(Model.AllowMarketing)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">ADDRESSES</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td colspan="2">
+                    Is Residential Address Same as Postal Address?&nbsp;&nbsp;<b>@Html.Raw(Model.PostalAddressSameResidential)</b>
+                </td>
+            </tr>
+            <tr>
+                <td class="TDWidth"><b>RESIDENTIAL ADDRESS</b></td>
+                <td><b>POSTAL ADDRESS</b></td>
+            </tr>
+            <tr>
+                <td>@Html.Raw(Model.ResidentialAddressStreetAddress)</td>
+                <td>@Html.Raw(Model.PostalAddressLineOne)</td>
+            </tr>
+            <tr>
+                <td>@Html.Raw(Model.ResidentialAddressSurbub)</td>
+                <td>@Html.Raw(Model.PostalAddressLineTwo)</td>
+            </tr>
+            <tr>
+                <td>@Html.Raw(Model.ResidentialAddressCity)</td>
+                <td>@Html.Raw(Model.PostalAddressCity)</td>
+            </tr>
+            <tr>
+                <td>@Html.Raw(Model.ResidentialAddressCountry)</td>
+                <td>@Html.Raw(Model.PostalAddressCode)</td>
+            </tr>
+            <tr>
+                <td>@Html.Raw(Model.ResidentialAddressProvince)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>@Html.Raw(Model.ResidentialAddressPostalCode)</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">GRAVEYARD</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Graveyard Type</b></td>
+                <td>@Html.Raw(Model.GraveyardType)</td>
+            </tr>
+            <tr>
+                <td><b>Graveyard Type Other Specify</b></td>
+                <td>@Html.Raw(Model.GraveyardTypeOtherSpecify)</td>
+            </tr>
+            <tr>
+                <td><b>Municipality</b></td>
+                <td>@Html.Raw(Model.Municipality)</td>
+            </tr>
+            <tr>
+                <td><b>Graveyard Digging</b></td>
+                <td>@Html.Raw(Model.GraveyardDigging)</td>
+            </tr>
+            <tr>
+                <td><b>Graveyard Closing And Clearing</b></td>
+                <td>@Html.Raw(Model.GraveyardClosingAndClearing)</td>
+            </tr>
+            <tr>
+                <td><b>Graveyard Other Details</b></td>
+                <td>@Html.Raw(Model.GraveyardOtherDetails)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">MORTUARIES</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Mortuary Location</b></td>
+                <td>@Html.Raw(Model.MortuaryLocation)</td>
+            </tr>
+            <tr>
+                <td><b>Mortuary Name</b></td>
+                <td>@Html.Raw(Model.MortuaryName)</td>
+            </tr>
+            <tr>
+                <td><b>Mortuary Other</b></td>
+                <td>@Html.Raw(Model.MortuaryOther)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">COUFIN</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Coufin</b></td>
+                <td>@Html.Raw(Model.CoufinType)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">TRANSPORTATION</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Hearse</b></td>
+                <td>@Html.Raw(Model.TransportationHearse)</td>
+            </tr>
+            <tr>
+                <td><b>Family Transport</b></td>
+                <td>@Html.Raw(Model.TransportationFamily)</td>
+            </tr>
+            <tr>
+                <td><b>Mini bus</b></td>
+                <td>@Html.Raw(Model.TransportationMinibus)</td>
+            </tr>
+            <tr>
+                <td><b>Bus</b></td>
+                <td>@Html.Raw(Model.TransportationBus)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">ACCOMMODTION</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Hotel</b></td>
+                <td>@Html.Raw(Model.AccomodationHotelQuestNumber)</td>
+            </tr>
+            <tr>
+                <td><b>B&B</b></td>
+                <td>@Html.Raw(Model.AccomodationBandBQuestNumber)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">TENT/HALL</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Hall Name</b></td>
+                <td>@Html.Raw(Model.HallName)</td>
+            </tr>
+            <tr>
+                <td><b>Tent Type</b></td>
+                <td>@Html.Raw(Model.TentType)</td>
+            </tr>
+            <tr>
+                <td><b>Toilet</b></td>
+                <td>@Html.Raw(Model.Toilet)</td>
+            </tr>
+            <tr>
+                <td><b>Type Of Decoration</b></td>
+                <td>@Html.Raw(Model.TypeofDecoration)</td>
+            </tr>
+            <tr>
+                <td><b>Affiliation Theme</b></td>
+                <td>@Html.Raw(Model.AffiliationTheme)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">CHAIRS</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Types Of Chairs</b></td>
+                <td>@Html.Raw(Model.TyepOfChair)</td>
+            </tr>
+            <tr>
+                <td><b>Number Of Chair</b></td>
+                <td>@Html.Raw(Model.NumberOfChair)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">CATERING</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Inkomo/Cow (Number)</b></td>
+                <td>@Html.Raw(Model.CateringNumberOfCow)</td>
+            </tr>
+            <tr>
+                <td><b>Sheep (Number)</b></td>
+                <td>@Html.Raw(Model.CateringNumberOfSheep)</td>
+            </tr>
+            <tr>
+                <td><b>Goat (Number)</b></td>
+                <td>@Html.Raw(Model.CateringNumberOfGoat)</td>
+            </tr>
+            <tr>
+                <td><b>Number Of People</b></td>
+                <td>@Html.Raw(Model.CateringNumberOfPeople)</td>
+            </tr>
+            <tr>
+                <td><b>Days Leading To Funeral</b></td>
+                <td>@Html.Raw(Model.CateringDayLeadingToFuneral)</td>
+            </tr>
+            <tr>
+                <td><b>Additional Water</b></td>
+                <td>@Html.Raw(Model.CateringAdditionalWater)</td>
+            </tr>
+            <tr>
+                <td><b>Other</b></td>
+                <td>@Html.Raw(Model.CateringOther)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">TOMBSTONE</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Tombstone</b></td>
+                <td>@Html.Raw(Model.Tombstone)</td>
+            </tr>
+            <tr>
+                <td><b>Other Specify</b></td>
+                <td>@Html.Raw(Model.TombstoneOtherSpecify)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">FLOWERS</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Fresh</b></td>
+                <td>@Html.Raw(Model.FlowerType)</td>
+            </tr>
+            <tr>
+                <td><b>Synthetic</b></td>
+                <td>@Html.Raw(Model.FlowerSpecify)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">ARTIST</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Music</b></td>
+                <td>@Html.Raw(Model.ArtistMusic)</td>
+            </tr>
+            <tr>
+                <td><b>Mic and sound</b></td>
+                <td>@Html.Raw(Model.ArtistSoundMic)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">OTHER SERVICES</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Minister</b></td>
+                <td>@Html.Raw(Model.OtherServiceMinister)</td>
+            </tr>
+            <tr>
+                <td><b>Service Programme Cards</b></td>
+                <td>@Html.Raw(Model.OtherServiceProgrammeCard)</td>
+            </tr>
+            <tr>
+                <td><b>Invitation Communication</b></td>
+                <td>@Html.Raw(Model.OtherServiceInvitationCommunication)</td>
+            </tr>
+            <tr>
+                <td><b>Family Members Tracing</b></td>
+                <td>@Html.Raw(Model.OtherServiceFamilyTracing)</td>
+            </tr>
+            <tr>
+                <td><b>Airtime/Data</b></td>
+                <td>@Html.Raw(Model.OtherServicesCommunication)</td>
+            </tr>
+            <tr>
+                <td><b>Gesture/Hospitality</b></td>
+                <td>@Html.Raw(Model.OtherServiceGestureHospitality)</td>
+            </tr>
+            <tr>
+                <td><b>Special Guests</b></td>
+                <td>@Html.Raw(Model.OtherServiceSpecialQuests)</td>
+            </tr>
+            <tr>
+                <td><b>Mouners</b></td>
+                <td>@Html.Raw(Model.OtherServiceMouners)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">POST FUNERAL</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td class="TDWidth"><b>Sharing Of Deseased Assets</b></td>
+                <td>@Html.Raw(Model.PostFuneralAssestSharing)</td>
+            </tr>
+            <tr>
+                <td><b>Other Deseased Beneficiaries Distributions</b></td>
+                <td>@Html.Raw(Model.PostFuneralOtherbeneficiaryDistribution)</td>
+            </tr>
+            <tr>
+                <td><b>Counseling Services</b></td>
+                <td>@Html.Raw(Model.PostFuneralCounselingService)</td>
+            </tr>
+            <tr>
+                <td><b>Recovery Process</b></td>
+                <td>@Html.Raw(Model.PostFuneralRecoveryProcess)</td>
+            </tr>
+            <tr>
+                <td><b>Gifts Collection And Distribution</b></td>
+                <td>@Html.Raw(Model.PostFuneralGiftManagement)</td>
+            </tr>
+            <tr>
+                <td><b>Cleaning And Clearing</b></td>
+                <td>@Html.Raw(Model.PostFuneralCleansing)</td>
+            </tr>
+            <tr>
+                <td><b>Closure</b></td>
+                <td>@Html.Raw(Model.PostFuneralClosure)</td>
+            </tr>
+            <tr>
+                <td><b>After-tears</b></td>
+                <td>@Html.Raw(Model.PostFuneralAfterTears)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel panel-success">
+        <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+                <h4 class="panel-title">
+                    <span style="color:#ffffff">SPECIAL REQUESTS (ANY OTHER)</span>
+                </h4>
+            </div>
+        </a>
+        <table class="table  table-hover">
+            <tr>
+                <td>@Html.Raw(Model.SpecialRequestSpecify)</td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+<div class="row" style="align-content:center">
+    <span class="pull-right">
+        <a id="PrintRequestPage" class="btn btn-md btn-primary" role="button">
+            <span class="glyphicon glyphicon-print">
+            </span>&nbsp;Print Request
+        </a>
+        
+    </span>
+    <br /><br />
+</div>
+
+@section Styles {
+
+    <style>
+        a:hover, a:visited, a:link, a:active {
+            text-decoration: none;
+        }
+
+        .controls {
+            margin-bottom: 10px;
+        }
+        .TDWidth {
+            width:30%
+        }
+         .TDAddress {
+            width:40%
+        }
+
+        .collapse-group {
+            padding: 10px;
+            border: 1px solid darkgrey;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+}
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(document.body).delegate('.CloseMessage', 'click', ClosePopupMessage)
+            function ClosePopupMessage() {
+                $('#Successmessage1').hide();
+            }
+
+        });
+    </script>
+}

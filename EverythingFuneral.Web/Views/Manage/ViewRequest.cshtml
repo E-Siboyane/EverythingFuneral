@@ -1,0 +1,123 @@
+﻿@model  List<EverythingFuneral.Web.Models.ViewModels.ViewRequestModelView>
+@{
+    ViewBag.Title = "Everything Funeral  - View Requests";
+}
+@if (ViewBag.Message != null) {
+    if (!string.IsNullOrEmpty(ViewBag.Message)) {
+        <div class="row">
+            <div id="Successmessage1" class="alert alert-success alert-dismissable" style="text-align:center;font-weight:bold">
+                <button id="CloseMessage" class="close CloseMessage" type="button">×</button>
+                <p>
+                    @Html.Raw(ViewBag.Message)
+                </p>
+            </div>
+        </div>
+    }
+}
+<div class="panel panel-success">
+    <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+        <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+            <h4 class="panel-title">
+                <span style="color:#ffffff">VIEW FUNERAL REQUEST SUMMARY</span>
+            </h4>
+        </div>
+    </a>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+        <div class="panel-body" style="margin-right:25px;margin-left:25px">
+            <div class="row">
+                <table id="FuneralRequest" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Reference Number</th>
+                            <th>Full Name</th>
+                            <th>ID/Passport Number</th>
+                            <th>Cellphone</th>
+                            <th>Funeral Option</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0) {
+                            foreach (var item in Model) {
+                                <tr>
+                                    <td>@Html.Raw(item.MembershipReference)</td>
+                                    <td>@Html.Raw(item.FullName)</td>
+                                    <td>@Html.Raw(item.IDNumber)</td>
+                                    <td>@Html.Raw(item.ContactNumber)</td>
+                                    <td>@Html.Raw(item.FuneralOption)</td>
+                                    <td>
+                                        <a role="button" class="btn btn-primary btn-sm"
+                                           href="@Url.Action("RequestServiceAuth", "Manage", new { recordNumber = item.RecordId })">
+                                            <i class="fa fa-eye">
+                                                &nbsp; View Options
+                                            </i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a role="button" class="btn btn-primary btn-sm"
+                                           href="@Url.Action("CompleteRequest", "Manage", new { recordNumber = item.RecordId })">
+                                            <i class="fa fa-check">
+                                                &nbsp; Complete  Request
+                                            </i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>                   
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <style>
+        a:hover, a:visited, a:link, a:active {
+            text-decoration: none;
+        }
+
+        .controls {
+            margin-bottom: 10px;
+        }
+
+        .collapse-group {
+            padding: 10px;
+            border: 1px solid darkgrey;
+            margin-bottom: 10px;
+        }
+
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+}
+
+@section Scripts {
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Collapse all Panels and validate form
+            $('.panel .collapse').collapse('show');
+
+            $('#FuneralRequest').DataTable();
+
+            $(document.body).delegate('.CloseMessage', 'click', ClosePopupMessage)
+            function ClosePopupMessage() {
+                $('#Successmessage1').hide();
+            }
+
+        });
+    </script>
+}

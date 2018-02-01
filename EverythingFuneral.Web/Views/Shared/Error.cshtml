@@ -1,0 +1,25 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+<div class="panel-body">
+    <div class="alert alert-info">
+        Something went wrong while processing your request. Please try again and if this error persist contact support team for
+        further assistance.<br />
+        <h3>Error Message</h3>
+        <p class="error-message">@Model.Exception.Message</></p>
+        <h3>Stacktrace</h3>
+        <p class="error-stacktrace">
+            @Model.Exception.StackTrace<br />
+            @if (Model.Exception.InnerException != null) {
+                Html.Raw(Model.Exception.InnerException.StackTrace);
+            }
+        </p>
+    </div>
+
+</div>

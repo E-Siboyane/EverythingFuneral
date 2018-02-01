@@ -1,0 +1,172 @@
+﻿@model  EverythingFuneral.Web.Models.ViewModels.RequestService
+@{
+    ViewBag.Title = "Request Service";
+}
+
+@using (Html.BeginForm("RequestService", "Manage", FormMethod.Post, new { @class = "form-horizontal", @id = "RequestServiceForm" })) {
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.RecordCode)
+    @Html.HiddenFor(x => x.CreatedDate)
+    @Html.HiddenFor(x => x.ClientDetailId)
+    @Html.HiddenFor(x => x.RecordUniqueId)
+    for (int i = 0; i < Model.FuneralOptions.Count; i++) {
+        @Html.HiddenFor(model => Model.FuneralOptions[i].DisplayText)
+        @Html.HiddenFor(model => Model.FuneralOptions[i].DisplayValue)
+    }
+    for (int i = 0; i < Model.SelectHighestQualifaction.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectHighestQualifaction[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectHighestQualifaction[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectLanguages.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectLanguages[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectLanguages[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectYesNoOptions.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectYesNoOptions[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectYesNoOptions[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectCountries.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectCountries[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectCountries[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectProvinces.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectProvinces[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectProvinces[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectGraveyardTypes.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectGraveyardTypes[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectGraveyardTypes[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectMortuaryTypes.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectMortuaryTypes[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectMortuaryTypes[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectTombstoneTypes.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectTombstoneTypes[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectTombstoneTypes[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectFlowerTypes.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectFlowerTypes[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectFlowerTypes[i].DisplayValue)
+                }
+    for (int i = 0; i < Model.SelectMaritalStatus.Count; i++) {
+        @Html.HiddenFor(model => Model.SelectMaritalStatus[i].DisplayText)
+                    @Html.HiddenFor(model => Model.SelectMaritalStatus[i].DisplayValue)
+                }
+    <div class="row">
+        @Html.Partial("_PersonalDetails", Model)
+    </div>
+}
+
+@section Styles {
+    <style>
+        a:hover, a:visited, a:link, a:active {
+            text-decoration: none;
+        }
+
+        .controls {
+            margin-bottom: 10px;
+        }
+
+        .collapse-group {
+            padding: 10px;
+            border: 1px solid darkgrey;
+            margin-bottom: 10px;
+        }
+
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //initial bootstrap tooltip and hide after click
+            $('body').tooltip({
+                selector: '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])',
+                trigger: 'hover',
+                container: 'body'
+            }).on('click mousedown mouseup', '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])', function () {
+                $('[data-toggle="tooltip"], [title]:not([data-toggle="popover"])').tooltip('destroy');
+            });
+
+            $('.DisplayControlName').mouseover(function () {
+                var textDisplay = $(this).attr('placeholder');
+                if (textDisplay == '') {
+                    textDisplay = $(this).val();
+                }
+                $(this).tooltip('hide').attr('data-original-title', textDisplay).tooltip('fixTitle').tooltip('show')
+            });
+
+
+            //Collapse all Panels and validate form
+            $('.panel .collapse').collapse('show');
+
+            $('#SubmitNewBusinessForm').on('click', function (evt) {
+                evt.preventDefault();
+                jQuery('#RequestServiceForm').submit()
+            });
+
+
+            jQuery('#RequestServiceForm').validate({
+                ignore: ".ignore",
+                invalidHandler: function (e, validator) {
+                    if (validator.errorList.length)
+                        var myTab = jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id');
+                    $("#" + myTab + "").tab('show');
+                    // $('#tabs a[href="#' + jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id') + '"]').tab('show')
+                }
+            });
+
+            //$('#RequestServiceForm').validate({
+            //    ignore: ".ignore",
+            //    invalidHandler: function (e, validator) {
+            //        if (validator.errorList.length)
+            //            $('#tabs a[href="#' + jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id') + '"]').tab('show')
+            //    }
+            //});
+
+            $('#ConfrimEmail').on('focusout', function (e) {
+                var emailAddress = $(this).val()
+                var params = { email: emailAddress }
+                if (emailAddress.length > 0) {
+                    $.ajaxSetup({ async: false });
+                    $.post("IsEmailUsed", params)
+                     .done(function (data) {
+                         if (!data) {
+                             alert ('The email/username is already taken : ' + emailAddress)
+                             $('#SubmitNewBusinessForm').attr('disabled', 'disabled');
+                             $(this).focus();
+                                 
+                         }
+                         else {
+                             alert('Username available')
+                             $('#SubmitNewBusinessForm').removeAttr('disabled');
+                         }
+                     }).fail(function (jXHR, status, error) {
+                         alert("An error has occurred and can't validate email address. Please try again.")
+                     });
+                    $.ajaxSetup({ async: true });
+                }
+            });
+
+            //$('#FuneralCategoryId').on('change', function (e) {
+            //    var id = $(this).children(":selected").val()
+            //    if (id.length > 0) {
+            //        $('#PanelTitle').text(($(this).children(":selected").text()))
+            //    }
+            //});
+
+        });
+    </script>
+}
