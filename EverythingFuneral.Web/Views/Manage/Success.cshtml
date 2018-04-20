@@ -531,7 +531,7 @@
     <span class="pull-right">
         <a id="PrintRequestPage" class="btn btn-md btn-primary" role="button">
             <span class="glyphicon glyphicon-print">
-            </span>&nbsp;Print Request
+            </span>&nbsp;Print Funeral Request
         </a>
         
     </span>
@@ -581,6 +581,20 @@
             $(document.body).delegate('.CloseMessage', 'click', ClosePopupMessage)
             function ClosePopupMessage() {
                 $('#Successmessage1').hide();
+            }
+
+            $(document.body).delegate('#PrintRequestPage', 'click', PrintRequest)
+            function PrintRequest() {
+                PrintPage
+                //Print PrintReceiptContent
+                var myPrintContent = document.getElementById('PrintPage');
+                var myPrintWindow = window.open();
+                myPrintWindow.document.write(myPrintContent.innerHTML);
+                myPrintWindow.document.getElementById('PrintPage').style.display = 'block'
+                myPrintWindow.document.close();
+                myPrintWindow.focus();
+                myPrintWindow.print();
+                myPrintWindow.close();
             }
 
         });

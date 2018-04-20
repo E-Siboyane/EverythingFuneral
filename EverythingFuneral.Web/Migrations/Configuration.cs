@@ -21,6 +21,29 @@ namespace EverythingFuneral.Web.Migrations
             AddCategories(context);
             AddRole(context);
             AddAdminUser(context);
+            AssignUserRole(context);
+        }
+
+        private void AssignUserRole(ApplicationDbContext context) {
+            var store = new UserStore<ApplicationUser>(context);
+            var manager = new UserManager<ApplicationUser>(store);
+            var user = context.Users.FirstOrDefault(x => string.Compare(x.UserName, "EFAdmin", true) == 0);
+            if (!manager.IsInRole(user.Id, "Admin")) {
+                manager.AddToRoles(user.Id, "Admin");
+            }
+        }
+
+        private void AddAdminUser(ApplicationDbContext context) {
+            var store = new UserStore<ApplicationUser>(context);
+            var manager = new UserManager<ApplicationUser>(store);
+            var user = new ApplicationUser() {
+                UserName = "EFAdmin",
+                Email = "Info@EverythingFuneral.co.za",
+                EmailConfirmed = true
+            };
+            if (!context.Users.Any(x => x.UserName == user.UserName)) {
+                var saveUser = manager.Create(user, "MESmtm3152#");
+            }
         }
 
         private static void AddRole(ApplicationDbContext _context) {

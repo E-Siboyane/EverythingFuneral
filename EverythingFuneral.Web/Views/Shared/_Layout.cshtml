@@ -6,6 +6,9 @@
     <title>@ViewBag.Title - Everything Funeral</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta Http-Equiv="Cache-Control" Content="no-cache" />
+    <meta Http-Equiv="Pragma" Content="no-cache" />
+    <meta Http-Equiv="Expires" Content="0" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
     <!-- Font -->
@@ -47,12 +50,17 @@
                                 <span class="icon-bar"></span>
                             </button>
 
-                            <a href="@Url.Action("Index","Home")" class="navbar-brand">EVERYTHING FUNERAL</a>
+                            <a href="#" class="navbar-brand"><img src="~/img/logo.png" alt="Logo" /></a>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                                <li><a href="@Url.Action("LogOff","Manage")">Logout</a></li>
+                                @if (HttpContext.Current.User.IsInRole("Admin")) {
+                                    <li><a href="@Url.Action("ViewRequest", "Manage")">View Requests</a></li>
+                                }
+                                 @if (HttpContext.Current.User.Identity.IsAuthenticated) {
+                                     <li><a href="@Url.Action("LogOff","Manage")">Logout</a></li>
+                                }
                             </ul>
                         </div>                       
 
@@ -83,9 +91,9 @@
                 <div class="col-sm-4">
                     <div class="footer-menu pull-right">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Services</a></li>
+                            <li><a href="@Url.Action("index","home")">Home</a></li>
+                            <li><a href="~/Home/Index#about">About</a></li>
+                            <li><a href="~/Home/Index#features">Services</a></li>
                         </ul>
                     </div>
                 </div>

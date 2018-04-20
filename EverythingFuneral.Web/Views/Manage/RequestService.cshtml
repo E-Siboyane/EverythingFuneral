@@ -128,14 +128,6 @@
                 }
             });
 
-            //$('#RequestServiceForm').validate({
-            //    ignore: ".ignore",
-            //    invalidHandler: function (e, validator) {
-            //        if (validator.errorList.length)
-            //            $('#tabs a[href="#' + jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id') + '"]').tab('show')
-            //    }
-            //});
-
             $('#ConfrimEmail').on('focusout', function (e) {
                 var emailAddress = $(this).val()
                 var params = { email: emailAddress }
@@ -150,7 +142,6 @@
                                  
                          }
                          else {
-                             alert('Username available')
                              $('#SubmitNewBusinessForm').removeAttr('disabled');
                          }
                      }).fail(function (jXHR, status, error) {
@@ -159,13 +150,6 @@
                     $.ajaxSetup({ async: true });
                 }
             });
-
-            //$('#FuneralCategoryId').on('change', function (e) {
-            //    var id = $(this).children(":selected").val()
-            //    if (id.length > 0) {
-            //        $('#PanelTitle').text(($(this).children(":selected").text()))
-            //    }
-            //});
 
         });
     </script>

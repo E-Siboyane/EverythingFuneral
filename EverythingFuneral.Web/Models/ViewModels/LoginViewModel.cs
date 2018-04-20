@@ -9,7 +9,6 @@ namespace EverythingFuneral.Web.Models.ViewModels {
     public class LoginViewModel {
         [Required]
         [DisplayName("Email")]
-        [DataType(DataType.EmailAddress, ErrorMessage ="Please enter valid email address")]
         public string Username { get; set; }
 
         [Required]
