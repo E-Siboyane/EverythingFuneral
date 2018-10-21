@@ -1,0 +1,91 @@
+﻿@model  EverythingFuneral.Web.Models.ViewModels.RequestService
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.DropDownList("FuneralCategoryId", new SelectList(Model.FuneralOptions, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.FuneralCategoryId)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.FuneralCategoryId), @data_Name = "RequestService" })
+        </div>
+        @if (Model.ClientDetailId == 0) {
+        <div class="form-group">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Username), @required = true } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ConfrimEmail, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ConfrimEmail), @required = true } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Password), @required = true } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ConfirmPassword), @required = true } })
+        </div>
+        }
+        else {
+            <div class="form-group">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Username), @readonly = true } })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.ConfrimEmail, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ConfrimEmail), @readonly = true } })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Password), @readonly = true } })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ConfirmPassword), @readonly = true } })
+            </div>
+        }
+        <div class="form-group">
+            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.FullName), @required = true } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Surname), @required = true } })
+        </div>  
+        <div class="form-group">
+            @Html.DropDownList("AllowMarketing", new SelectList(Model.SelectYesNoOptions, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.AllowMarketing)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.AllowMarketing), @data_Name = "RequestService" })
+        </div>          
+    </div>
+    <div class="col-lg-4"> 
+        <div class="form-group">
+            @Html.EditorFor(model => model.IdNumber, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.IdNumber), @required = true } })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("CountryOfIssue", new SelectList(Model.SelectCountries, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.CountryOfIssue)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.CountryOfIssue), @data_Name = "RequestService" })
+        </div>              
+        <div class="form-group">
+            @Html.DropDownList("MaritalStatus", new SelectList(Model.SelectMaritalStatus, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.MaritalStatus)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.MaritalStatus), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("HighestQualification", new SelectList(Model.SelectHighestQualifaction, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.HighestQualification)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.HighestQualification), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("HomeLanguage", new SelectList(Model.SelectLanguages, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.HomeLanguage)), new { @class = "DisplayControlName form-control", @required = true, @Placeholder = Html.DisplayNameFor(m => m.HomeLanguage), @data_Name = "RequestService" })
+        </div>  
+        <div class="form-group">
+            @Html.EditorFor(model => model.NumberOfDependent, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.NumberOfDependent), @required = true, @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.EmployerName, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.EmployerName), @required = true } })
+        </div>          
+    </div>
+    <div class="col-lg-4">  
+        <div class="form-group">
+            @Html.EditorFor(model => model.Industry, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Industry), @required = true } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.YearsWorkingAtEmployer, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.YearsWorkingAtEmployer), @required = true, @type = "number" } })
+        </div>     
+        <div class="form-group">
+            @Html.EditorFor(model => model.GrossSalary, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.GrossSalary), @required = true, @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.NetIncome, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.NetIncome), @required = true, @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CellNumber, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CellNumber), @required = true, @type = "number", @minLength = "10", @maxLength = "10", @oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.NextOfKinName, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.NextOfKinName), @required = true } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.NextOfKinCellNumber, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.NextOfKinCellNumber), @required = true, @type = "number", @minLength = "10", @maxLength = "10", @oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" } })
+        </div>         
+    </div>    
+</div>

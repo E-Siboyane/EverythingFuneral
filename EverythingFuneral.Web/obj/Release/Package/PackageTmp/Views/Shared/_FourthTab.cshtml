@@ -1,0 +1,65 @@
+﻿@model  EverythingFuneral.Web.Models.ViewModels.RequestService
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.EditorFor(model => model.HallName, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.HallName) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.TentType, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TentType) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Toilet, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Toilet) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.TypeofDecoration, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TypeofDecoration) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.AffiliationTheme, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.AffiliationTheme) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.TyepOfChair, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TyepOfChair) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.NumberOfChair, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.NumberOfChair), @type = "number" } })
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.EditorFor(model => model.CateringNumberOfCow, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CateringNumberOfCow), @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CateringNumberOfSheep, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CateringNumberOfSheep), @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CateringNumberOfGoat, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CateringNumberOfGoat), @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CateringNumberOfPeople, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CateringNumberOfPeople), @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CateringDayLeadingToFuneral, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CateringDayLeadingToFuneral) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CateringAdditionalWater, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CateringAdditionalWater) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CateringOther, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CateringOther) } })
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.DropDownList("FlowerType", new SelectList(Model.SelectFlowerTypes, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.FlowerType)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.FlowerType), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.FlowerSpecify, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.FlowerSpecify) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ArtistMusic, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ArtistMusic) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ArtistSoundMic, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.ArtistSoundMic) } })
+        </div>
+    </div>
+</div>
+
+

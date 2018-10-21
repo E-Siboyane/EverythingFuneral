@@ -1,0 +1,40 @@
+﻿@model EverythingFuneral.Web.Models.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Everything - Signin";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="row">
+    <br /><br /><br /><br />
+</div>
+
+
+
+@using (Html.BeginForm("Login", "Manage", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" })) {
+    @Html.AntiForgeryToken()
+    <h3 class="form-signin-heading" style="color:blue">Funeral Arragements - Signin</h3>
+
+        <input type="text" id="Username" name="Username" value="@Model.Username" class="form-control" placeholder="Email Address/Username"  required autofocus>
+        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        <div class="checkbox">
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe)
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <br />
+            @*Display Error messages*@
+if (!ViewData.ModelState.IsValid) {
+    <div class="row">
+        <div class="alert alert-danger alert-dismissable">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            <p>
+                @Html.ValidationSummary(true)
+            </p>
+        </div>
+    </div>
+    }
+
+}
+

@@ -1,0 +1,127 @@
+﻿@model  EverythingFuneral.Web.Models.ViewModels.RequestService
+<div class="panel panel-success">
+    <a role="button" data-toggle="collapse" href="#collapseOne" style="text-decoration:none" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+        <div class="panel-heading" role="tab" id="headingOne" style="background-color:#1c84c6">
+            <h4 class="panel-title">
+                <span style="color:#ffffff">Thank you for choosing the <span id="PanelTitle">@Model.FuneralOptions.FirstOrDefault(x => string.Compare(x.DisplayValue, Model.FuneralCategoryId.ToString(), true) == 0).DisplayText</span> option, please select your options below</span>
+            </h4>
+        </div>
+    </a>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body" style="margin-right:25px;margin-left:25px">
+            @if (!ViewData.ModelState.IsValid) {
+                <div class="row">
+                    <div class="alert alert-danger alert-dismissable">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        <p>
+                            @Html.Raw(ViewBag.ValidationErrorMessage)
+                        </p>
+                    </div>
+                </div>
+            }
+            @{ 
+                var message = ViewBag.ValidationErrorMessage;
+            }
+            @if (!string.IsNullOrEmpty(ViewBag.ValidationErrorMessage)) {
+                <div class="row">
+                    <div class="alert alert-danger alert-dismissable">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        <p>
+                            @Html.Raw(ViewBag.ValidationErrorMessage)
+                        </p>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-0"> Personal Information</a></li>
+                        <li><a data-toggle="tab" href="#tab-1"> Addresses</a></li>
+                        <li><a data-toggle="tab" href="#tab-2"> Funeral Plan - Options 1</a></li>
+                        <li><a data-toggle="tab" href="#tab-3"> Funeral Plan - Options 2</a></li>
+                        <li><a data-toggle="tab" href="#tab-4"> Funeral Plan - Options 3</a></li>
+                        <li><a data-toggle="tab" href="#tab-5"> Funeral Plan - Special requests</a></li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <div id="tab-0" class="tab-pane active">
+                            <div class="panel-body">
+                                <div class="row">
+                                    @Html.Partial("_FirstTab", Model)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-1" class="tab-pane ">
+                            <div class="panel-body">
+                                <div class="row">
+                                    @Html.Partial("_SecondTab", Model)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+                                    @Html.Partial("_ThirdTab", Model)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-3" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+                                    @Html.Partial("_FourthTab", Model)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-4" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+                                    @Html.Partial("_FifthTab", Model)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-5" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+                                    @Html.Partial("_SixthTab", Model)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <span class="pull-right">
+                    <a href="@Url.Action("index", "Home")" class="btn btn-md btn-primary" role="button">
+                        <span class="glyphicon glyphicon-chevron-left glyphicon-chevron-left">
+                        </span>&nbsp;Home
+                    </a>
+                    <button id="SubmitNewBusinessForm" type="submit" class="btn btn-md btn-default">
+                        <span class="glyphicon glyphicon-plus">
+                        </span>&nbsp;Submit Service Request
+                    </button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#FuneralCategoryId').on('change', function (e) {
+                var id = $(this).children(":selected").val()
+                if (id.length > 0) {
+                    $('#PanelTitle').text(($(this).children(":selected").text()))
+                }
+            });
+
+        });
+</script>

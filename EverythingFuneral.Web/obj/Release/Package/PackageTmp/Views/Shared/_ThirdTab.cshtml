@@ -1,0 +1,65 @@
+﻿@model  EverythingFuneral.Web.Models.ViewModels.RequestService
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.DropDownList("GraveyardType", new SelectList(Model.SelectGraveyardTypes, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.GraveyardType)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.GraveyardType), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.GraveyardTypeOtherSpecify, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.GraveyardTypeOtherSpecify) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Municipality, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Municipality) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.GraveyardDigging, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.GraveyardDigging) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.GraveyardClosingAndClearing, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.GraveyardClosingAndClearing)} })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.GraveyardOtherDetails, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.GraveyardOtherDetails) } })
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.DropDownList("MortuaryName", new SelectList(Model.SelectMortuaryTypes, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.MortuaryName)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.MortuaryName), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.MortuaryOther, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.MortuaryOther) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.MortuaryLocation, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.MortuaryLocation) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.CoufinType, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.CoufinType) } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.AccomodationHotelQuestNumber, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.AccomodationHotelQuestNumber), @type = "number" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.AccomodationBandBQuestNumber, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.AccomodationBandBQuestNumber), @type = "number" } })
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.DropDownList("TransportationHearse", new SelectList(Model.SelectYesNoOptions, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.TransportationHearse)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TransportationHearse), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("TransportationFamily", new SelectList(Model.SelectYesNoOptions, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.TransportationFamily)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TransportationFamily), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("TransportationMinibus", new SelectList(Model.SelectYesNoOptions, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.TransportationMinibus)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TransportationMinibus), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("TransportationBus", new SelectList(Model.SelectYesNoOptions, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.TransportationBus)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TransportationBus), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("Tombstone", new SelectList(Model.SelectTombstoneTypes, "DisplayValue", "DisplayText"), string.Format("- {0} -", Html.DisplayNameFor(m => m.Tombstone)), new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.Tombstone), @data_Name = "RequestService" })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.TombstoneOtherSpecify, new { htmlAttributes = new { @class = "DisplayControlName form-control", @Placeholder = Html.DisplayNameFor(m => m.TombstoneOtherSpecify) } })
+        </div>
+    </div>
+</div>
+
